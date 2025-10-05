@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>View Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css"> <!-- Link to the new CSS file -->
+</head>
+<body>
+    <% layout("layouts/boilerplate") %>
+    <div class="container mt-2">
+        <div class="profile-card card mt-3">
+            <div class="card-body">
+                <!-- Page heading -->
+                <h2>Your Profile</h2>
+
+                <!-- Form to update user information -->
+                <form id="profile-form" method="POST" action="/users/<%= currentUser._id %>?_method=PUT">
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<%= currentUser.username %>" readonly>
+                        <div class="invalid-feedback" id="username-error">Username cannot be empty.</div>
+                    </div>
+                    
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= currentUser.email %>" readonly>
+                        <div class="invalid-feedback" id="email-error">Please enter a valid email address.</div>
+                    </div>
+
+                    <!-- Quiz Statistics -->
+                    <div class="mb-3">
+                        <label class="form-label">Quiz Statistics</label>
+                        <ul class="list-group">
+                            <li class="list-group-item">Taken Quizzes: <strong><%= takenQuizzes %></strong></li>
+                            <li class="list-group-item">Created Quizzes: <strong><%= currentUser.createdQuizzesCount  %></strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Buttons: Edit Info and Save Changes -->
+                    <div class="right-align">
+                        <button id="edit-btn" class="btn btn-secondary mt-3" type="button" onclick="enableEditing()">Edit Information</button>
+                        <button id="save-btn" class="btn btn-primary mt-3 d-none" type="submit">Save Changes</button>
+                    </div>
+                </form>
+
+                <!-- Form to delete the account -->
+                <form id="delete-account-form" method="POST" action="/users/<%= currentUser._id %>?_method=DELETE">
+                    <div class="right-align">
+                        <button id="delete-btn" class="btn btn-danger mt-3" type="submit" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.')">Delete Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to enable editing of input fields
+        function enableEditing() {
+            document.getElementById('username').removeAttribute('readonly');
+            document.getElementById('email').removeAttribute('readonly');
+            document.getElementById('edit-btn').classList.add('d-none');
+            document.getElementById('save-btn').classList.remove('d-none');
+        }
+    </script>
+</body>
+</html>

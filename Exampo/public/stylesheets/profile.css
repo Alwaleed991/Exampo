@@ -1,0 +1,124 @@
+/* Center the card on the page and reduce its size */
+.profile-card {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Add shadow */
+    border-radius: 10px;
+    background-color: #ffffff; /* White background for contrast */
+    border: 1px solid #eaeaea; /* Soft border */
+    overflow: hidden;
+}
+
+/* Adjust padding inside the card */
+.card-body {
+    padding: 2rem;
+}
+
+/* Label styling */
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555; /* Slightly darker text for labels */
+}
+
+/* Input field styling */
+.form-control {
+    font-size: 14px;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; /* Soft background for inputs */
+}
+
+
+
+/* Style the buttons */
+.btn {
+    font-size: 14px;
+    padding: 0.5rem 1.25rem;
+}
+
+/* Save and Edit button spacing */
+#save-btn {
+    margin-right: 10px;
+}
+
+/* Right-align buttons and make them inline */
+.right-align {
+    display: flex;
+    justify-content: space-between; /* Space between Save and Delete */
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Delete button styling */
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Edit and Save button styling */
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Smaller heading */
+h2 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333; /* Darker text color */
+}
+
+/* List group item styling */
+.list-group-item {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa; /* Light background for quiz statistics */
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+}
+
+/* Additional spacing between elements */
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Add some hover effects for the form inputs */
+.form-control:hover, .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* General page background */
+body {
+    background-color: #f4f7fa; /* Light page background */
+}
+#edit-btn {
+    background-color: #1e3c72; /* ضع اللون الذي تريده هنا */
+    color: white; /* يمكنك أيضاً تغيير لون النص */
+    border: none; /* إزالة الحدود */
+}
+
+#edit-btn:hover {
+    background-color: #16305b; /* تغيير لون الخلفية عند التمرير */
+}

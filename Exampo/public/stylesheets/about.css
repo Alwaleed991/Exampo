@@ -1,0 +1,137 @@
+/* General Styling */
+.about-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    max-width: 900px; /* Increased for better spacing on larger screens */
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+}
+
+.about-container h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.about-container p {
+    font-size: 18px;
+    text-align: justify;
+    line-height: 1.8; /* Better readability */
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Features Section */
+.about-features {
+    margin-top: 30px;
+}
+
+.about-features h2 {
+    font-size: 28px;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.about-features ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.about-features li {
+    margin: 8px 0;
+    color: #444;
+    font-size: 18px;
+}
+
+/* Team Section */
+.about-team {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.about-team h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Individual Cards */
+.team-card {
+    background-color: #ffffff;
+    border: 1px solid #003366;
+    border-radius: 300px;
+    padding: 25px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team-card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.team-card p {
+    margin: 10px 0;
+    color: #34495e;
+    text-align: center;
+    font-style: italic;
+    font-size: 10.8px;
+    font-weight: light;
+}
+
+.linkedin-icon {
+    margin-top: 1px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.linkedin-icon:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 15px;
+    }
+
+    .about-container h1 {
+        font-size: 32px;
+    }
+
+    .about-container p {
+        font-size: 16px;
+    }
+
+    .team-cards {
+        flex-direction: column; /* Stack cards vertically on small screens */
+        align-items: center;
+    }
+
+    .team-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}

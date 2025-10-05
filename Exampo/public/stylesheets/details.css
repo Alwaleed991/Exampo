@@ -1,0 +1,238 @@
+.header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #1e3c72;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0a58d5;
+}
+
+#commentBtn {
+  padding: 10px;
+  margin: 20px 0;
+  border-color: white;
+  
+}
+
+
+#commentBtn svg {
+  width: 40px;
+  height: 40px;
+  fill: rgb(0, 0, 0);
+}
+
+#commentBox {
+  margin: 20px 0;
+  display: none;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#commentBox textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.item-list {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+  position: relative;
+  padding-top: 40px;
+}
+
+.item:hover {
+  background-color: #e8f1ff;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.content {
+  font-size: 18px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.author {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  color: #28a745;
+  font-size: 14px;
+}
+
+.author a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.date {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover, .close:focus {
+  color: #555;
+  text-decoration: none;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 40px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.rating > span:before {
+  content: "\2605";
+  position: absolute;
+  color: inherit;
+}
+
+.rating > span.active,
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: #f7d51d;
+}
+
+.rating > span.half {
+  background: linear-gradient(90deg, #f7d51d 50%, #ddd 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating > span:hover {
+  transform: scale(1.1);
+}
+
+.button {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #1e3c72; /* Default color */
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+}
+
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: #1e3c72; /* Default color for the icon */
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.button:hover {
+  background-color: #17c03b; /* Green color when hovered */
+}
+
+.button:hover .button__icon-wrapper {
+  color: #17c03b; /* Change icon color when hovered */
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.button:hover .button__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.button:hover .button__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}

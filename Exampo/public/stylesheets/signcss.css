@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #ffffff; /* Changed background color to light blue */
+   
+}
+
+.container1 {
+    background: #f7fcff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 60px auto; /* Reduced top margin to move the container up */
+    border-radius: 10px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2),   /* Soft shadow */
+        0 10px 20px rgba(69, 69, 71, 0.5); /* Main shadow */
+    transition: box-shadow 0.3s ease; /* Add transition for shadow */
+}
+.container1:hover {
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.2),   /* Increased soft shadow on hover */
+        0 15px 25px rgba(69, 69, 71, 0.5); /* Slightly enhanced main shadow */
+}
+
+form {
+    margin: 1px;;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+    color: #1e3c72; /* Changed title color to navy */
+}
+
+input {
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    padding-left: 1.5rem;
+    font-size: 15px;
+}
+
+.input-group {
+    padding: 1% 0;
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    color: black;
+}
+
+input:focus {
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid #1e3c72; /* Changed focus border color to navy */
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: 0.3s ease all;
+}
+
+input:focus ~ label, input:not(:placeholder-shown) ~ label {
+    top: -3em;
+    color: #1e3c72; /* Changed label color to navy */
+    font-size: 15px;
+}
+
+.recover {
+    display: none; /* Removed recover password section */
+}
+
+.btn1 {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background: #1e3c72; /* Changed button background color to navy */
+    color: white;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.btn1:hover {
+    background: #377ccc; /* Darkened button hover color */
+}
+
+.or {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: #1e3c72; /* Changed color of "or" text to navy */
+}
+
+.icons {
+    text-align: center;
+}
+
+.icons i {
+    color: #1e3c72; /* Changed icon color to navy */
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid #dfe9f5;
+    margin: 0 15px;
+    transition: 1s;
+}
+
+.icons i:hover {
+    background: #153b66; /* Darkened icon hover background color */
+    font-size: 1.6rem;
+    border: 2px solid #1e3c72; /* Changed icon hover border color to navy */
+}
+
+.links {
+    display: flex;
+    justify-content: center; /* Align items horizontally in the center */
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 0.3rem; /* Reduce the margin-top */
+    font-weight: bold;
+}
+
+button {
+    color: #1e3c72; /* Changed button color to navy */
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+button:hover {
+    text-decoration: underline;
+    color: #153b66; /* Darkened button hover color */
+}
+
+
+/* Media Queries لعمل الصفحة ريسبونسف */
+@media (max-width: 768px) {
+    .container1 {
+        width: 100%; /* يسمح بتوسيع الحاوية لتكون 100% في الشاشات الصغيرة */
+        margin: 30px auto; /* تعديل الهامش ليظهر بشكل أفضل */
+        padding: 1rem;
+    }
+
+    .form-title {
+        font-size: 1.3rem; /* تقليل حجم الخط */
+        padding: 1rem;
+    }
+
+    input {
+        font-size: 14px; /* تقليل حجم الخط في المدخلات */
+    }
+
+    .btn1 {
+        font-size: 1rem; /* تقليل حجم الخط في الزر */
+        padding: 10px 0;
+    }
+
+    .or {
+        font-size: 1rem; /* تقليل حجم الخط للنص */
+    }
+
+    .icons i {
+        font-size: 1.3rem; /* تقليل حجم الأيقونات */
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container1 {
+        width: 90%; /* جعل الحاوية أصغر على الأجهزة الصغيرة */
+        margin: 20px auto;
+        padding: 1rem;
+    }
+
+    .form-title {
+        font-size: 1.2rem; /* تقليل حجم الخط */
+        padding: 0.8rem;
+    }
+
+    input {
+        font-size: 13px; /* تقليل حجم الخط في المدخلات */
+    }
+
+    .btn1 {
+        font-size: 0.9rem; /* تقليل حجم الخط في الزر */
+        padding: 12px 0;
+    }
+
+    .icons i {
+        font-size: 1.2rem; /* تقليل حجم الأيقونات */
+        padding: 0.5rem 1rem;
+    }
+}
+

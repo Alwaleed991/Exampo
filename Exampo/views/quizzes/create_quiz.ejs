@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <title>create quiz</title>
+    <link rel="stylesheet" href="/stylesheets/create_quiz.css">
+</head>
+<body>
+    <main>
+        <% layout("layouts/boilerplate") %>
+        <div class="content">
+            <div class="quiz-container">
+                <h2>Create Quiz</h2>
+                <a href="/quizzes-ai/new">
+                    <button class="btnai2">
+                        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                        </svg>
+                        <span class="text">Using AI</span>
+                    </button>
+                </a>
+                <form id="quizForm" method="POST" action="/quizzes/create">
+                    <label>Enter Quiz Title:</label>
+                    <input type="text" id="quizTitle" name="title" placeholder="Enter the quiz title here" required />
+                    <p id="titleError" class="error-message" style="display: none;">Please enter a quiz title.</p>
+                    <label for="quiz-category">Choose a Category:</label>
+                    <div class="category-container">
+                        <select id="quiz-category" name="quiz-category">
+                            <option value="general" selected>General</option>
+                            <option value="science">Science</option>
+                            <option value="education">Education</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                            <option value="literature">Literature</option>
+                            <option value="movies-tv">Movies & TV Shows</option>
+                            <option value="music">Music</option>
+                            <option value="sports">Sports</option>
+                            <option value="technology">Technology</option>
+                        </select>
+                       
+                    </div>
+
+                    <label for="quiz-time">Choose Quiz Time (in minutes):</label>
+                    <input type="number" id="quiz-time" name="quiz-time" min="1" max="120" placeholder="Enter minutes" required/>
+
+                    <div id="questionsContainer">
+                        <div class="question-container" data-question-index="0">
+                            <label>Enter Question:</label>
+                            <input type="text" name="questions[0][questionText]" class="question-input" placeholder="Type your question here" required />
+        
+                            <label>Enter Answer Choice 1:</label>
+                            <input type="text" name="questions[0][options][0][text]" class="answer-input" placeholder="Enter choice 1" required />
+                            <div class="radio"><input type="radio" name="questions[0][correctAnswer]" value="0" label="Correct" required></div> 
+
+                            <label>Enter Answer Choice 2:</label>
+                            <input type="text" name="questions[0][options][1][text]" class="answer-input" placeholder="Enter choice 2" required />
+                            <div class="radio"><input type="radio" name="questions[0][correctAnswer]" value="1" label="Correct" required></div> 
+        
+                            <label>Enter Answer Choice 3:</label>
+                            <input type="text" name="questions[0][options][2][text]" class="answer-input" placeholder="Enter choice 3" required />
+                            <div class="radio"><input type="radio" name="questions[0][correctAnswer]" value="2" label="Correct" required></div> 
+        
+                            <label>Enter Answer Choice 4:</label>
+                            <input type="text" name="questions[0][options][3][text]" class="answer-input" placeholder="Enter choice 4" required />
+                            <div class="radio"><input type="radio" name="questions[0][correctAnswer]" value="3" label="Correct" required></div> 
+        
+                            <p class="error-message" style="display: none;">Please fill all the fields correctly.</p>
+                        </div>
+                    </div>
+        
+                    <button type="button" class="button" onclick="addQuestion()">Add Another Question</button>
+                    <br> <br>
+                    <button type="submit" class="button">Submit Quiz</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        let questionIndex = 1;  // Start with question index 1 because the first question already exists
+    
+        function addQuestion() {
+            const questionsContainer = document.getElementById('questionsContainer');
+    
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question-container');
+            questionDiv.setAttribute('data-question-index', questionIndex);
+    
+            questionDiv.innerHTML = `
+                <label>Enter Question:</label>
+                <input type="text" name="questions[${questionIndex}][questionText]" class="question-input" placeholder="Type your question here" required />
+                
+                <label>Enter Answer Choice 1:</label>
+                <input type="text" name="questions[${questionIndex}][options][0][text]" class="answer-input" placeholder="Enter choice 1" />
+                 <div class="radio"><input type="radio" name="questions[${questionIndex}][correctAnswer]" value="0" label="Correct" required></div>
+    
+                <label>Enter Answer Choice 2:</label>
+                <input type="text" name="questions[${questionIndex}][options][1][text]" class="answer-input" placeholder="Enter choice 2" />
+                 <div class="radio"><input type="radio" name="questions[${questionIndex}][correctAnswer]" value="1" label="Correct" ></div>
+    
+                <label>Enter Answer Choice 3:</label>
+                <input type="text" name="questions[${questionIndex}][options][2][text]" class="answer-input" placeholder="Enter choice 3" />
+                 <div class="radio"><input type="radio" name="questions[${questionIndex}][correctAnswer]" value="2" label="Correct" ></div>
+    
+                <label>Enter Answer Choice 4:</label>
+                <input type="text" name="questions[${questionIndex}][options][3][text]" class="answer-input" placeholder="Enter choice 4" />
+                <div class="radio"><input type="radio" name="questions[${questionIndex}][correctAnswer]" value="3" label="Correct" ></div>
+                <button type="button" class="btn btn-danger" onclick="deleteQuestion(this)">Delete Question</button>
+            
+                <p class="error-message" style="display: none;">Please fill all fields correctly.</p>
+            `;
+            questionsContainer.appendChild(questionDiv);
+    
+            questionIndex++;  // Increment the question index for the next question
+        }
+
+        function deleteQuestion(button) {
+            // Remove the parent question container div
+            const questionDiv = button.closest('.question-container');
+            questionDiv.remove();
+
+            // Optionally, if needed, renumber question indexes here after a question is deleted
+        }
+
+    </script>
+    
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

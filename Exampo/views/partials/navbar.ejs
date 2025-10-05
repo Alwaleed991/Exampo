@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <!-- Logo and Home Link -->
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+                <img class="logo ms-2 header-logo" src="/images/newlogo.png" alt="Logo" style="height: 40px;">
+            </a>
+
+            <!-- Navbar Toggler for Small Screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Left Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                    <li class="nav-item"><a href="/quizzes" class="nav-link px-2 text-white">All Quizzes</a></li>
+                    <% if(currentUser) { %>
+                        <li class="nav-item"><a href="/quizzes/my" class="nav-link px-2 text-white">My Quizzes</a></li>
+                    <% } %>
+                    <li class="nav-item"><a href="/quizzes/new" class="nav-link px-2 text-white">Create Quiz</a></li>
+                    <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
+
+                    <% if(currentUser && currentUser.username === "admin") { %>
+                        <li class="nav-item"><a href="/admin/dashboard" class="nav-link px-2 text-white">Admin Dashboard</a></li>
+                    <% } %>
+                </ul>
+
+                <!-- Right Buttons -->
+                <div class="d-flex align-items-center">
+                    <% if(!currentUser) { %>
+                        <a href="/login"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                        <a href="/register"><button type="button" class="btn btn-info">Sign-up</button></a>
+                    <% } else { %>
+                        <!-- Profile Dropdown -->
+                        <li class="nav-item dropdown ms-3 list-unstyled">
+                            <a class="nav-link px-2 text-white d-flex align-items-center dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/profile">View Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+

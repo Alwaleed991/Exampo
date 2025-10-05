@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <link rel="stylesheet" href="public/stylesheets/signcss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <style></style>
+  <body>
+
+    <div class="container" id="signup">
+        
+        <!-- Logo for branding -->
+        <img src="yodi8/Exampo/public/images/logo2.png" alt="Examp Logo" style="width: 40%; max-width: 300px; display: block; margin: 0 auto;">
+
+        <!-- Main title of the form -->
+        <h1 class="form-title">Sign Up</h1>
+
+        <!-- Sign-up Form -->
+        <form method="post" action="#" id="signupForm">
+            <!-- Input group for Username -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <label for="name">Username</label>
+            </div>
+            <!-- Input group for Email -->
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <!-- Input group for Password -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            <!-- Input group for Confirm Password -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                <label for="confirm_password">Confirm Password</label>
+            </div>
+            <!-- Submit button -->
+            <input type="submit" class="btn" value="Sign Up" name="signUp">
+        </form>
+        
+        <br>
+        <!-- Links for existing users -->
+        <div class="links">
+            <p>Already Have Account?</p>
+            <button onclick="window.location.href = 'Signin.html';">Login</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS for potential UI components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
+    
+  </body>
+</html>
+
+

@@ -1,0 +1,236 @@
+<% layout("layouts/boilerplate") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz  Management Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <h1>Quiz Management Dashboard</h1>
+        <br>
+        
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <div class="value" id="totalUsers"><%= totalUsers %></div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Quizzes</h3>
+                <div class="value" id="totalQuizzes"><%= totalQuizzes %></div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Comments</h3>
+                <div class="value" id="totalComments"><%= totalComments %></div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('userManagement')">User Management</button>
+            <button class="tab" onclick="switchTab('quizManagement')">Quiz Management</button>
+        </div>
+
+        <!-- User Management Section -->
+        <div id="userManagement" class="management-section active">
+            <h2>User Management</h2>
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Quizzes Made</th>
+                        <th>Total Comments</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <% userManagementData.forEach((user, index) => { %>
+                        <tr>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.quizzesMade %></td>
+                            <td><%= user.totalComments %></td>
+                            <td>
+                                <button 
+                                    type="button" 
+                                    class="delete-btn" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#deleteUserModal-<%= index %>">
+                                    Delete
+                                </button>
+                
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteUserModal-<%= index %>" tabindex="-1" aria-labelledby="deleteUserModalLabel-<%= index %>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteUserModalLabel-<%= index %>">Confirm Deletion</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the user <strong><%= user.username %></strong>?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                
+                                                <!-- Form Inside Modal -->
+                                                <form action="/admin/<%= user._id %>?_method=DELETE" method="post">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                
+            </table>
+        </div>
+
+        <!-- Quiz Management Section -->
+        <div id="quizManagement" class="management-section">
+            <h2>Quiz Management</h2>
+            <table id="quizTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Creator</th>
+                        <th>Comments</th>
+                        <th>Ratings</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="quizTableBody">
+                    <% quizManagementData.forEach((quiz, index) => { %>
+                        <tr>
+                            <td><%= quiz.title %></td>
+                            <td><%= quiz.creator %></td>
+                            <td><%= quiz.comments %></td>
+                            <td><%= quiz.ratings %></td>
+                            <td>
+                                <!-- Edit Button -->
+                                <button 
+                                    class="edit-btn" 
+                                    onclick="window.location.href='/quizzes/<%= quiz.quizId %>/edit';">
+                                    Edit Quiz
+                                </button>
+                
+                                <!-- Delete Button -->
+                                <button 
+                                    type="button" 
+                                    class="delete-btn" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#deleteQuizModal-<%= index %>">
+                                    Delete
+                                </button>
+                
+                                <!-- Delete Confirmation Modal -->
+                                <div class="modal fade" id="deleteQuizModal-<%= index %>" tabindex="-1" aria-labelledby="deleteQuizModalLabel-<%= index %>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteQuizModalLabel-<%= index %>">Confirm Deletion</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the quiz <strong><%= quiz.title %></strong> created by <strong><%= quiz.creator %></strong>?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                
+                                                <!-- Delete Form -->
+                                                <form action="/admin/quiz/<%= quiz.quizId %>?_method=DELETE" method="post">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+    <script>
+//        function deleteUser(userId) {
+//     fetch(`/admin/users/${userId}`, { method: 'DELETE' })
+//         .then(response => response.json())
+//         .then(data => {
+//             alert(data.message);
+//             location.reload(); // Reload the page after deletion
+//         })
+//         .catch(err => console.error(err));
+// }
+
+
+// function deleteQuiz(quizId) {
+//     console.log(`Deleting quiz with ID: ${quizId}`); // Log the ID to verify it's correct
+
+//     if (!quizId) {
+//         alert('Invalid Quiz ID.');
+//         return;
+//     }
+
+//     fetch(`/quizzes/${quizId}?_method=DELETE`, { method: 'POST' }) // Method is POST, interpreted as DELETE
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Failed to delete the quiz.');
+//             }
+//             return response.json(); // Parse the response as JSON
+//         })
+//         .then(data => {
+//             // Dynamically remove the quiz row from the table
+//             const quizRow = document.querySelector(`button[onclick="deleteQuiz('${quizId}')"]`).closest('tr');
+//             if (quizRow) {
+//                 quizRow.remove(); // Remove the quiz row from the table
+//             }
+
+//             // Optionally, update total quizzes and total comments dynamically
+//             const totalQuizzesElem = document.getElementById('totalQuizzes');
+//             if (totalQuizzesElem) {
+//                 totalQuizzesElem.textContent = parseInt(totalQuizzesElem.textContent) - 1;
+//             }
+
+//             const totalCommentsElem = document.getElementById('totalComments');
+//             if (totalCommentsElem) {
+//                 totalCommentsElem.textContent = parseInt(totalCommentsElem.textContent) - parseInt(data.deletedComments || 0);
+//             }
+
+//             location.reload();
+//         })
+//         .catch(err => {
+//             console.error('Error deleting quiz:', err);
+            
+//             location.reload();
+//         });
+// }
+
+
+
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.management-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

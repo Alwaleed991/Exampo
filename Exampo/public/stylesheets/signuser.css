@@ -1,0 +1,271 @@
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+.carousel-container {
+    position: relative;
+    width: 100%; /* Change this to 100% */
+    overflow: hidden;  /* Hide overflow for smooth carousel scrolling */
+    user-select: none;  /* Prevent text selection during drag */
+    
+}
+
+.carousel {
+    display: flex;  /* This ensures the cards are displayed in a row */
+    transition: transform 0.4s ease-in-out;
+    cursor: grab;
+    margin: 0; /* Ensure no margin is applied */
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 255px;  /* Ensure each card is the same width */
+    flex: none;  /* Prevent flex items from growing or shrinking */
+    margin: 10px; /* Maintain margin for spacing */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #1f8ef1;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1c7cd1;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+/* ---------------------------------------------------------------------------- */
+
+/* Existing styles... */
+.ag-format-container {
+width: 1142px;
+margin: 0 auto;
+}
+
+.ag-courses_box {
+display: flex;
+align-items: flex-start;
+flex-wrap: wrap;
+padding: 50px 0;
+
+}
+
+.ag-courses_item {
+flex-basis: calc(25.8% - 30px); 
+margin: 0 10px 20px; /* Adjusted margin */
+overflow: hidden;
+border-radius: 28px;
+text-decoration: none;
+}
+
+.ag-courses-item_link {
+display: flex; /* استخدم flex للتنسيق */
+flex-direction: column; /* ترتيب العناصر عموديًا */
+justify-content: space-between; /* توزيع العناصر في الفضاء */
+padding: 20px 15px; /* Reduced padding */
+background-color: #061855;
+overflow: hidden;
+position: relative;
+text-decoration: none;
+height: 220px; /* Adjust this value as needed */
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+text-decoration: none;
+color: #FFF;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+transform: scale(10);
+}
+
+.ag-courses-item_title {
+height: 60px; /* Fixed height for the title */
+line-height: 1.2; /* Adjust line spacing */
+margin: 65px 0 15px; /* Increased top margin to move title down */
+font-weight: bold;
+font-size: 30px; /* Keep the font size as is */
+color: #FFF;
+z-index: 2;
+position: relative;
+overflow: hidden; /* Hide excess text */
+text-overflow: ellipsis; /* Show ellipsis if text is long */
+white-space: nowrap; /* Prevent text from wrapping to a new line */
+display: block; /* Set display to block */
+text-align: center; /* Center align text */
+}
+
+
+
+.ag-courses-item_user-box {
+font-size: 18px;
+color: #FFF;
+z-index: 2;
+position: relative;
+text-align: left; /* محاذاة النص إلى اليسار */
+}
+
+
+.ag-courses-item_username {
+font-weight: bold;
+color: #ffffff;
+transition: color .5s ease;
+}
+
+.ag-courses-item_bg {
+height: 128px;
+width: 128px;
+background-color: #000000;
+z-index: 1;
+position: absolute;
+top: -75px;
+right: -75px;
+border-radius: 50%;
+transition: all .5s ease;
+}
+.ag-courses-item_rating {
+position: absolute; /* Position it absolutely within the card */
+bottom: 20px; /* Adjust this value to match the user box height */
+right: 10px; /* Adjust this value for horizontal positioning */
+display: flex; /* Use flex to align the star and rating */
+align-items: center; /* Center the items vertically */
+color: #ffffff; /* Color for the star */
+z-index: 2; /* Ensure it is above the card */
+margin-right: 10px;
+}
+
+.ag-courses-item_rating_value {
+margin-left: 5px; /* Space between star and rating text */
+font-size: 16px; /* Font size for rating */
+color: #FFF; /* Color for the rating text */  
+}
+
+
+
+.ag-courses_item .ag-courses-item_bg {
+background-color: #3ecd5e; /* Default color */
+}
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 767px) {
+    .ag-format-container {
+        width: 96%;
+    }
+
+    .carousel-container {
+        width: 100%; /* Ensure the carousel takes full width */
+    }
+
+    .card {
+        width: 100%; /* Full width for cards on small screens */
+        margin: 10px 0; /* Adjust margins */
+    }
+}
+
+/* For very small screens (mobile devices) */
+@media only screen and (max-width: 639px) {
+    .ag-courses_item {
+        flex-basis: 100%; /* Full width for cards */
+    }
+
+    .ag-courses-item_link {
+        padding: 15px 30px;
+        height: 250px;
+    }
+
+    .ag-courses-item_title {
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .ag-courses-item_date-box {
+        font-size: 16px;
+    }
+
+    .carousel {
+        flex-direction: column; /* Stack carousel items vertically */
+    }
+
+    .carousel-container {
+        padding: 0 10px; /* Padding for mobile */
+    }
+}
+/* For tablets (width between 768px and 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .ag-format-container {
+        width: 90%; /* Adjust container width */
+    }
+
+    .carousel-container {
+        width: 100%; /* Ensure carousel takes full width */
+    }
+
+    .card {
+        width: 110%; /* Adjust card width */
+        margin: 15px; /* Adjust margins */
+    }
+
+    .ag-courses_item {
+        flex-basis: 48%; /* Adjust for tablet */
+        margin: 10px;
+    }
+
+    .ag-courses-item_link {
+        height: 230px; /* Adjust height of courses on tablets */
+        padding: 20px;
+    }
+
+    .carousel {
+        flex-direction: row; /* Keep carousel items in a row */
+    }
+}
+

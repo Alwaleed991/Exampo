@@ -1,0 +1,63 @@
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Bootstrap CSS CDN -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/signcss.css">
+
+
+</head>
+<style></style>
+
+<body>
+    <% layout("layouts/boilerplate") %>
+
+    <div class="container1" id="signup">
+
+            <!-- Logo for branding -->
+            <img src="/images/logo2.png" alt="Exampo Logo"
+                style="width: 40%; max-width: 300px; display: block; margin: 0 auto;">
+            <!-- Main title of the form -->
+            <h1 class="form-title">Register</h1>
+
+            <!-- Sign-up Form -->
+            <form method="post" action="/register" id="signupForm">
+                <!-- Input group for Username -->
+                <div class="input-group">
+                    <i class="fas fa-user m-1"></i>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                    <label for="username" class="mx-2">Username</label>
+                </div>
+                <!-- Input group for Email -->
+                <div class="input-group">
+                    <i class="fas fa-envelope m-1"></i>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <label for="email" class="mx-2">Email</label>
+                </div>
+                <!-- Input group for Password -->
+                <div class="input-group">
+                    <i class="fas fa-lock m-1"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <label for="password" class="mx-2">Password</label>
+                </div>
+                <!-- Input group for Confirm Password -->
+                <div class="input-group">
+                    <i class="fas fa-lock m-1"></i>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
+                        required>
+                    <label for="confirm_password" class="mx-2">Confirm Password</label>
+                </div>
+                <!-- Submit button -->
+                <input type="submit" class="btn1" value="Register" name="register">
+            </form>
+
+            <br>
+            <!-- Links for existing users -->
+            <div class="links">
+                <p>Already Have Account?<span><button onclick="window.location.href = 'login';">Login</button></span>
+                </p>
+
+            </div>
+    </div>
+</body>
+</html>

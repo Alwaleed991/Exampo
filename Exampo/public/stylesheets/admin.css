@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-color: #f0f2f5;
+    padding: 0;
+}
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+h1, h2 {
+    color: #333;
+}
+.stats-container {
+display: flex;
+justify-content: space-between;
+margin-bottom: 20px;
+gap: 20px; /* Adds space between the cards */
+}
+
+.stat-card {
+flex: 1;
+background: linear-gradient(135deg, #8e44ad, #3498db); /* Subtle gradient */
+color: white;
+padding: 20px 15px;
+border-radius: 15px; /* Rounded corners */
+text-align: center;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Drop shadow for depth */
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.stat-card:hover {
+transform: translateY(-10px); /* Lifts the card slightly on hover */
+box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.stat-card h3 {
+font-size: 1.5em;
+margin-bottom: 10px;
+text-transform: uppercase; /* Makes the text more striking */
+letter-spacing: 1px; /* Adds space between letters */
+}
+
+.stat-card .value {
+font-size: 3em;
+font-weight: bold;
+margin-top: 10px;
+color: #f9f9f9; /* Slightly lighter text for better contrast */
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+.tab {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.tab.active {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    font-weight: bold;
+}
+.tab:hover {
+    background: linear-gradient(135deg, #5a0fc9, #2353f7);
+}
+.management-section {
+    display: none;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.management-section.active {
+    display: block;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+table th {
+    background-color: #f7f8fa;
+}
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.delete-btn, .edit-btn {
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 5px;
+}
+.delete-btn {
+    background: linear-gradient(135deg, #f85032, #e73827);
+    color: white;
+}
+.delete-btn:hover {
+    background: linear-gradient(135deg, #e73827, #c52d1a);
+    transform: scale(1.05);
+}
+.delete-btn:active {
+    transform: scale(0.95);
+}
+.edit-btn {
+    background: linear-gradient(135deg, #1e3c72, #1e3c72);
+    color: white;
+}
+.edit-btn:hover {
+    background: linear-gradient(135deg, #007ff7, #007ff7);
+    transform: scale(1.05);
+}
+.edit-btn:active {
+    transform: scale(0.95);
+}

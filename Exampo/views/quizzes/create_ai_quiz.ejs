@@ -1,0 +1,43 @@
+<% layout("layouts/boilerplate") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/create_quiz.css">
+    <title>Create Quiz</title>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="quiz-container">
+            <h2>Create Quiz With AI</h2>
+
+                <form action="/quizzes-ai/create" method="POST">
+                    <!-- Quiz Title Input -->
+                    <label for="quizTitle">Quiz Subject:</label>
+                    <input type="text" id="quizTitle" name="subject" placeholder="Enter the topic for quiz questions (e.g., Algebra, Geometry)" required />
+                    <p id="titleError" class="error-message">Please enter a quiz title.</p>
+
+                    <!-- Number of Questions Input -->
+                    <label for="questionCount">Number of Questions:</label>
+                    <input type="number" id="questionCount" name="questionCount" min="1" max="20" placeholder="Enter number of questions" required />
+
+                    <!-- Quiz Time Input -->
+                    <label for="quizTime">Quiz Time (in minutes):</label>
+                    <input type="number" id="quizTime" name="quizTime" min="1" max="120" placeholder="Enter time in minutes" required />
+
+                    
+                <!-- Submit Button -->
+                <button class="btnai1">
+                    <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                    </svg>
+                    <span class="text">Generate</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

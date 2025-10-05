@@ -1,0 +1,21 @@
+footer {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the logo and copyright */
+    padding: 20px;
+    background-color: #001f3e; /* Dark background color */
+    color: #ffffff; /* Light text */
+    border-top: 1px solid #495057; /* Slightly lighter border */
+    position: relative;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.copyright {
+    font-size: 14px; /* Font size for copyright */
+    color: #ffffff; /* White copyright color */
+}
+
+/* Additional styles can be added here */

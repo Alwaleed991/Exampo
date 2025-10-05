@@ -1,0 +1,207 @@
+/* html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+} */
+
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(17, 70, 186) 50%, #09f 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+/* Existing styles go here */
+/* body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+} */
+
+/* Container styling */
+.quiz-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Adjust width */
+    max-width: 800px; /* Prevent it from becoming too large */
+    margin: 0 auto; /* Center align the container */
+    }
+
+/* Question and timer styles */
+.question-container {
+margin-bottom: 20px;
+font-size: 24px; /* Increased font size for the question */
+font-weight: bold; /* Bold text for emphasis */
+color: #333; /* Darker color for better readability */
+margin-bottom: 15px; /* Space below the question */
+
+padding-bottom: 10px; /* Space below the underline */
+}
+.question {
+font-size: 24px; /* Increased font size for the question */
+font-weight: bold; /* Bold text for emphasis */
+color: #333; /* Darker color for better readability */
+margin-bottom: 15px; /* Space below the question */
+
+padding: 15px; /* Added padding for better spacing */
+background-color: #ebf3f7; /* White background for contrast */
+border: 2px solid #ffffff; /* Green border for a clean outline */
+border-radius: 10px; /* Rounded corners for a softer look */
+/* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); Subtle shadow for depth */
+transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition on hover */
+}
+
+.timer {
+font-size: 24px;
+color: #333;
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* Progress bar styles */
+.progress {
+height: 10px;
+background-color: #e0e0e0;
+margin-bottom: 20px;
+border-radius: 2px;
+}
+
+.progress-bar {
+height: 100%;
+background-color: #15ba49;
+border-radius: 2px;
+transition: width 0.3s ease;
+}
+
+/* Option button styles */
+.options {
+display: flex;
+flex-direction: column;
+gap: 15px;
+margin-bottom: 30px;
+}
+
+.option {
+background: #2c78bf; /* Option background */
+color: #fff;
+border: none;
+padding: 15px;
+border-radius: 12px;
+font-size: 1.1rem;
+cursor: pointer;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+height: 50px;
+width: 100%; /* Full width */
+}
+
+/* Hover effect for options */
+.option:hover {
+background-color: #0d3c62; /* Darker blue on hover */
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Option state styles */
+.option.selected {
+background-color: #0a2b44; /* Lighter blue for selected */
+}
+
+.option.correct {
+background-color: #a7e3a9; /* Light green for correct */
+}
+
+.option.wrong {
+background-color: #d85764; /* Light red for wrong */
+}
+
+/* Navigation button styles */
+.navigation-buttons {
+display: flex;
+justify-content: flex-end; /* Aligns the button(s) to the right */
+margin-top: 20px;
+}
+
+button {
+background-color: #1e3c72;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+margin: 0 5px;
+}
+
+button:disabled {
+background-color: #cccccc;
+cursor: not-allowed;
+}
+
+#submit-btn {
+background-color: #4caf50;
+}
+
+/* Results and review section styles */
+.results {
+text-align: center;
+}
+
+.review-question {
+margin-bottom: 20px;
+padding: 15px;
+border-radius: 5px;
+background-color: #f8f9fa;
+}
+
+.pulse {
+    animation: pulse 0.8s infinite; /* Faster pulsing: reduced duration */
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.6);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.75);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.6);
+      opacity: 1;
+    }
+  }

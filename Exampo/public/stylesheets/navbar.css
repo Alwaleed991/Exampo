@@ -1,0 +1,118 @@
+
+header.p-3.text-bg-dark {
+    background-color: #001f3e !important; /* Overrides Bootstrap's background */
+}
+
+/* Header Logo */
+.header-logo {
+    position: absolute;
+    top: 0.8rem;
+    left: -25px; /* يمكنك تعديل هذه القيمة حسب الحاجة */
+    max-width: 500px;
+    height: auto;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+
+/* Footer Logo (keep default or adjust as needed) */
+.footer-logo {
+    position: static; /* Centered by default */
+    display: block;
+    margin: 0 auto; /* Centers the logo in the footer */
+    max-width: 48px;
+    height: auto;
+}
+
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-right:40px; /* Add horizontal margin to create space between links */
+    border-radius: 5px; /* Add border radius for rounded buttons */
+}
+
+.nav-link:hover {
+    background-color: #024587;; /* Change background on hover */
+    border-color: #003366; /* Change border color on hover */
+}
+
+
+.btn-outline-light {
+    border-color: #0077aa;
+    
+    
+}
+
+
+.btn-warning {
+    background-color: #0077aa;
+    color: #ffffff;
+    border-color: #0077aa;
+}
+.btn-warning:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color:black ;
+    
+}
+
+/* Aligns the profile dropdown to the right */
+.nav-item.dropdown {
+    margin-left: auto; /* Ensures the profile icon moves to the right */
+    list-style: none; /* Removes any default list styling */
+}
+
+/* Additional styles for the profile dropdown icon */
+.nav-item.dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu-dark {
+    background-color: #002446;
+    border: none;
+}
+/* Style the text input */
+form.search {
+    display: flex; /* Use flexbox to align items in a row */
+    
+}
+
+form.search input[type="search"] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    background: #f1f1f1;
+    width: 80%; /* Ensure the input takes 80% width */
+    height: 35px;
+    box-sizing: border-box; /* Ensures padding and borders are included in the width */
+    outline: none; /* Remove default outline on focus */
+}
+
+form.search button {
+    width: 20%; /* Button takes up the remaining 20% */
+    padding: 10px;
+    background: #1e3c72;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    height: 35px;
+    display: flex; /* Center the icon within the button */
+    align-items: center; /* Vertically align the icon */
+    justify-content: center; /* Horizontally align the icon */
+}
+
+form.search button i {
+    position: relative; 
+    top: 0; /* Icon is now centered, no need to adjust its position */
+}
+
+/* Hover effect for the button */
+form.search button:hover {
+    background: #0b7dda;
+}
+
+

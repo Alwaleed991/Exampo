@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <title>Edit Quiz</title>
+    <link rel="stylesheet" href="/stylesheets/create_quiz.css">
+</head>
+<body>
+    <main>
+        <% layout("layouts/boilerplate") %>
+        <div class="content">
+            <div class="quiz-container">
+                <h2>Edit Quiz</h2>
+        
+                <form id="quizForm" method="POST" action="/quizzes/<%= quiz._id %>?_method=PUT">
+                    <!-- Quiz Title -->
+                    <label>Enter Quiz Title:</label>
+                    <input type="text" id="quizTitle" name="title" value="<%= quiz.title %>" required />
+                    <p id="titleError" class="error-message" style="display: none;">Please enter a quiz title.</p>
+                
+                    <!-- Questions and Options -->
+                    <div id="questionsContainer">
+                        <% quiz.questions.forEach(function(question, index) { %>
+                            <div class="question-container" data-question-index="<%= index %>">
+                                <!-- Question Text -->
+                                <label>Enter Question:</label>
+                                <input type="text" name="questions[<%= index %>][questionText]" class="question-input" value="<%= question.questionText %>" required />
+                
+                                <!-- Options for Each Question -->
+                                <% question.options.forEach(function(option, optIndex) { %>
+                                    <label>Enter Answer Choice <%= optIndex + 1 %>:</label>
+                                    <input type="text" name="questions[<%= index %>][options][<%= optIndex %>][text]" class="answer-input" value="<%= option.text %>" required />
+                
+                                    <!-- Correct Answer Radio Button -->
+                                    <div class="radio">
+                                        <input type="radio" label="Correct" name="questions[<%= index %>][correctAnswer]" value="<%= optIndex %>" <%= option.isCorrect ? 'checked' : '' %> required>
+                                    </div>
+
+                                <% }) %>
+                                <button type="button" class="btn btn-danger" onclick="deleteQuestion(this)">Delete Question</button>
+                                <p class="error-message" style="display: none;">Please fill all the fields correctly.</p>
+                            </div>
+                        <% }) %>
+
+                     
+                    </div>
+                
+                    <!-- Add Another Question -->
+                    <button type="button" class="button" onclick="addQuestion()">Add Another Question</button>
+                
+                    <!-- Submit Updated Quiz -->
+                    <button type="submit" class="button">Update Quiz</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+
+    
+    <script>
+        let questionIndex = <%- JSON.stringify(quiz.questions.length) %>;  // Initialize with the current number of questions
+
+        function addQuestion() {
+            const questionsContainer = document.getElementById('questionsContainer');
+
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question-container');
+            questionDiv.setAttribute('data-question-index', questionIndex);
+
+            questionDiv.innerHTML = `
+                <label>Enter Question:</label>
+                <input type="text" name="questions[${questionIndex}][questionText]" class="question-input" placeholder="Type your question here" required />
+                
+                <label>Enter Answer Choice 1:</label>
+                <input type="text" name="questions[${questionIndex}][options][0][text]" class="answer-input" placeholder="Enter choice 1" required />
+                <div class="radio">
+                    <input type="radio" label="Correct" name="questions[${questionIndex}][correctAnswer]" value="0" required> 
+                </div>
+
+                <label>Enter Answer Choice 2:</label>
+                <input type="text" name="questions[${questionIndex}][options][1][text]" class="answer-input" placeholder="Enter choice 2" required />
+                <div class="radio">
+                    <input type="radio" label="Correct" name="questions[${questionIndex}][correctAnswer]" value="1"> 
+                </div>
+
+                <label>Enter Answer Choice 3:</label>
+                <input type="text" name="questions[${questionIndex}][options][2][text]" class="answer-input" placeholder="Enter choice 3" required />
+                <div class="radio">
+                    <input type="radio" label="Correct" name="questions[${questionIndex}][correctAnswer]" value="2"> 
+                </div>
+
+                <label>Enter Answer Choice 4:</label>
+                <input type="text" name="questions[${questionIndex}][options][3][text]" class="answer-input" placeholder="Enter choice 4" required />
+                <div class="radio">
+                    <input type="radio" label="Correct" name="questions[${questionIndex}][correctAnswer]" value="3"> 
+                </div>
+                <button type="button" class="btn btn-danger" onclick="deleteQuestion(this)">Delete Question</button>
+            `;
+
+            questionsContainer.appendChild(questionDiv);
+
+            // Increment the question index for the next question
+            questionIndex++;
+        }
+
+
+        function deleteQuestion(button) {
+            // Remove the parent question container div
+            const questionDiv = button.closest('.question-container');
+            questionDiv.remove();
+
+            // Optionally, if needed, renumber question indexes here after a question is deleted
+        }
+
+
+    </script>
+    
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

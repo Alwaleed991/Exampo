@@ -1,0 +1,254 @@
+<% layout("layouts/boilerplate") %>
+<title>Home</title>
+<link rel="stylesheet" href="/stylesheets/home.css"> <!-- Add your custom styles here -->
+<link rel="stylesheet" href="/stylesheets/signuser.css">
+
+<div>
+        <% if(!currentUser) {%>
+            <div class="content text-center my-5">
+                <h1 class="display-4">Welcome to Exampo!</h1>
+                <p class="lead">Your ultimate quiz platform to create and participate in quizzes on various topics.</p>
+                <p>Join us and challenge your knowledge!</p>
+                <a href="register" class="btn btn-outline-success">Join Now</a> <!-- Join Now button -->
+                <div class="animated-image"></div> 
+            
+            </div>
+        <% }else{ %> 
+            <%- include("./partials/home_ai_welcoming") %> 
+        <% } %>
+
+<!-- put the AI things here -->
+      
+
+
+
+         <!-- Recent Quizzes Section -->
+        <div class="recent-quizzes-title">
+            <h2 style="color: rgb(2, 2, 92);"> <br>&nbsp;&nbsp;Recent Quizzes</h2>
+            <hr style="border: 1px solid #333333;">
+        </div>
+        <div class="carousel-container">
+            <div class="carousel" id="recent-carousel">
+                <% recentQuizzes.forEach(quiz => { %>
+                    <div class="ag-courses_item card"> 
+                        <a href="/quizzes/<%= quiz._id %>" class="ag-courses-item_link">
+                            <div class="ag-courses-item_bg" style="background-color: <%= quiz.hoverColor || '#0f0f0f' %>;"></div>
+                            <div class="ag-courses-item_title">
+                                <%= quiz.title %>
+                            </div>
+                            <div class="ag-courses-item_user-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: -2px;" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
+                                <span class="ag-courses-item_username">
+                                    <%= quiz.owner.username %>
+                                </span>
+                            </div>
+                            <div class="ag-courses-item_rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                                <span class="ag-courses-item_rating_value"><%= quiz.averageRating ? quiz.averageRating.toFixed(1) : 'No rating yet' %></span>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+        
+    <!-- Top Rated Quizzes Section -->
+    <div class="recent-quizzes-title">
+        <h2 style="color: rgb(2, 2, 92);"> <br>&nbsp;&nbsp;Top Rated Quizzes</h2>
+        <hr style="border: 1px solid #333333;">
+    </div>
+    <div class="carousel-container">
+        <div class="carousel" id="top-rated-carousel">
+            <% topRatedQuizzes.forEach(quiz => { %>
+                <div class="ag-courses_item card"> 
+                    <a href="/quizzes/<%= quiz._id %>" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg" style="background-color: <%= quiz.hoverColor || '#0f0f0f' %>;"></div>
+                        <div class="ag-courses-item_title">
+                            <%= quiz.title %>
+                        </div>
+                        <div class="ag-courses-item_user-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: -2px;" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                            <span class="ag-courses-item_username">
+                                <%= quiz.owner.username %>
+                            </span>
+                        </div>
+                        <div class="ag-courses-item_rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                            <span class="ag-courses-item_rating_value"><%= quiz.averageRating ? quiz.averageRating.toFixed(1) : 'No rating yet' %></span>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+
+    <!-- New Quiz-tastic Queries Section -->
+    <div class="container my-5">
+        <h1 class="text-center">Exampo Queries</h1>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        What is Exampo all about?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Exampo is your go-to platform for creating and sharing quizzes that are as fun as they are educational!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        How does the AI feature work?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Our AI generates quizzes tailored to your interests, making quiz creation a breeze!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        Can I rate and comment on quizzes?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Yes, you can rate quizzes and leave comments to share your feedback with creators and other users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        Is it free to use?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Yes, it’s free to create and take quizzes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        What topics can I explore?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">You can explore a variety of topics including science, history, and more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card1 h-100">
+                    <div class="card-header">
+                        How can I get started?
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Simply sign up to create your first quiz and explore our available quizzes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+            function setupCarousel(carouselId, paginationId, cardsPerView) {
+            const carousel = document.getElementById(carouselId);
+            const cards = carousel.querySelectorAll('.card');
+            const pagination = document.getElementById(paginationId);
+            const totalCards = cards.length;
+            const totalPages = Math.ceil(totalCards / cardsPerView);
+
+            // Generate dots based on the total pages
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) {
+                    dot.classList.add('active');
+                }
+                dot.setAttribute('data-index', i);
+                pagination.appendChild(dot);
+            }
+
+            let currentPage = 0;
+
+            // Function to update the carousel position
+            function updateCarousel(pageIndex) {
+                const offset = -(pageIndex * carousel.offsetWidth);
+                carousel.style.transform = `translateX(${offset}px)`;
+
+                // Update active dot
+                document.querySelector(`#${paginationId} .dot.active`).classList.remove('active');
+                pagination.children[pageIndex].classList.add('active');
+            }
+
+            // Add event listeners to the dots
+            pagination.querySelectorAll('.dot').forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const pageIndex = parseInt(e.target.getAttribute('data-index'));
+                    currentPage = pageIndex;
+                    updateCarousel(pageIndex);
+                });
+            });
+
+            // Optional: Add swipe functionality for touch devices
+            let isDragging = false;
+            let startX = 0;
+
+            carousel.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX;
+                carousel.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                }
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const dx = e.pageX - startX;
+                if (dx > 100 && currentPage > 0) {
+                    currentPage--;
+                    updateCarousel(currentPage);
+                    isDragging = false;
+                } else if (dx < -100 && currentPage < totalPages - 1) {
+                    currentPage++;
+                    updateCarousel(currentPage);
+                    isDragging = false;
+                }
+            });
+        }
+
+        // Initialize both carousels with pagination
+        setupCarousel('recent-carousel', 'recent-pagination', 3);
+        setupCarousel('most-carousel', 'most-pagination', 3);
+        // ----------------------------------------------------------------
+        function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Apply random colors to each card
+    const cards = document.querySelectorAll('.ag-courses_item .ag-courses-item_bg');
+    cards.forEach(card => {
+        card.style.backgroundColor = getRandomColor();
+    });
+</script>

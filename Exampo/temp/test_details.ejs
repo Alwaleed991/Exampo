@@ -1,0 +1,141 @@
+<head>
+    <title>quiz details</title>
+    <link rel="stylesheet" href="/stylesheets/details.css"> 
+  </head>
+  <body>
+    <% layout("layouts/boilerplate") %>
+  
+      <div class="header">
+        <button href="#" class="button" style="--clr: #7808d0">
+          <span class="button__icon-wrapper">
+            <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg" width="10">
+              <path
+                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                fill="currentColor"></path>
+            </svg>
+            <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+              class="button__icon-svg button__icon-svg--copy">
+              <path
+                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                fill="currentColor"></path>
+            </svg>
+          </span>
+          Take Quiz
+        </button>
+        <button id="rateBtn">Rate</button>
+      </div>
+  
+      <div class="item-list">
+        <div class="item">
+  
+          <p class="author">By: mohammed</p>
+          <a href="#" class="content">Hhdjs</a>
+          <p class="date">2024-09-24 20:32:31</p>
+        </div>
+        <div class="item">
+          <a href="#" class="content">***********</a>
+          <p class="author">By:Aziz13</p>
+          <p class="date">2024-05-31 18:01:23</p>
+        </div>
+        <div class="item">
+          <a href="#" class="content">hello</a>
+          <p class="author">By: Aziz13</p>
+          <p class="date">2024-05-18 14:15:46</p>
+        </div>
+        <div class="item">
+          <a href="#" class="content">Haskell</a>
+          <p class="author">By: ibrahim</p>
+          <p class="date">2024-05-16 01:29:09</p>
+        </div>
+      </div>
+  
+      <div id="commentBox">
+        <textarea placeholder="Add your comment here..."></textarea>
+        <button id="submitComment">Send</button>
+      </div>
+  
+      <button id="commentBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+          <path
+            d="M 25 4.0625 C 12.414063 4.0625 2.0625 12.925781 2.0625 24 C 2.0625 30.425781 5.625 36.09375 11 39.71875 C 10.992188 39.933594 11 40.265625 10.71875 41.3125 C 10.371094 42.605469 9.683594 44.4375 8.25 46.46875 L 7.21875 47.90625 L 9 47.9375 C 15.175781 47.964844 18.753906 43.90625 19.3125 43.25 C 21.136719 43.65625 23.035156 43.9375 25 43.9375 C 37.582031 43.9375 47.9375 35.074219 47.9375 24 C 47.9375 12.925781 37.582031 4.0625 25 4.0625 Z M 25 5.9375 C 36.714844 5.9375 46.0625 14.089844 46.0625 24 C 46.0625 33.910156 36.714844 42.0625 25 42.0625 C 22.996094 42.0625 21.050781 41.820313 19.21875 41.375 L 18.65625 41.25 L 18.28125 41.71875 C 18.28125 41.71875 15.390625 44.976563 10.78125 45.75 C 11.613281 44.257813 12.246094 42.871094 12.53125 41.8125 C 12.929688 40.332031 12.9375 39.3125 12.9375 39.3125 L 12.9375 38.8125 L 12.5 38.53125 C 7.273438 35.21875 3.9375 29.941406 3.9375 24 C 3.9375 14.089844 13.28125 5.9375 25 5.9375 Z">
+          </path>
+        </svg>
+      </button>
+  
+      <div id="ratingModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Rate this quiz</h2>
+          <div class="rating">
+            <span data-value="5">☆</span><span data-value="4">☆</span><span data-value="3">☆</span><span
+              data-value="2">☆</span><span data-value="1">☆</span>
+          </div>
+          <p id="ratingText">Select your rating</p>
+          <button id="submitRating" disabled>Rate</button>
+        </div>
+      </div>
+  
+  
+  
+      <script>
+        const commentBtn = document.getElementById('commentBtn');
+        const commentBox = document.getElementById('commentBox');
+        const rateBtn = document.getElementById('rateBtn');
+        const modal = document.getElementById('ratingModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        const stars = document.querySelectorAll('.rating > span');
+        const submitRatingBtn = document.getElementById('submitRating');
+        const ratingText = document.getElementById('ratingText');
+        let rating = 0;
+  
+        commentBtn.onclick = function () {
+          commentBox.style.display = commentBox.style.display === 'none' || commentBox.style.display === '' ? 'block' : 'none';
+        }
+  
+        document.getElementById('submitComment').onclick = function () {
+          alert('Comment submitted!');
+          commentBox.style.display = 'none';
+        }
+  
+        rateBtn.onclick = function () {
+          modal.style.display = 'block';
+        }
+  
+        closeBtn.onclick = function () {
+          modal.style.display = 'none';
+        }
+  
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+  
+        stars.forEach((star) => {
+          star.addEventListener('mousemove', (e) => {
+            const rect = star.getBoundingClientRect();
+            const isLeftHalf = e.clientX - rect.left < rect.width / 2;
+            const value = parseInt(star.getAttribute('data-value'));
+            rating = isLeftHalf ? value - 0.5 : value;
+            updateStars();
+            ratingText.textContent = `You selected ${rating} star${rating !== 1 ? 's' : ''}`;
+            submitRatingBtn.disabled = false;
+          });
+        });
+  
+        function updateStars() {
+          stars.forEach((star) => {
+            const starValue = parseInt(star.getAttribute('data-value'));
+            star.classList.remove('active', 'half');
+  
+            if (starValue <= Math.floor(rating)) {
+              star.classList.add('active');
+            } else if (starValue - 0.5 <= rating) {
+              star.classList.add('half');
+            }
+          });
+        }
+      </script>
+  </body>
+  
+  </html>

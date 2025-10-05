@@ -1,0 +1,254 @@
+/* Button styles */
+.btn-outline-success {
+  border-color: green; /* Custom green border */
+  color: green; /* Custom text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-outline-success:hover {
+  background-color: green; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}
+.animated-image {
+background-image: url(https://charlesriverinteractive.com/wp-content/uploads/2018/06/quiztime-1.gif);
+width: 320px;
+height: 320px;  /* Set a fixed height if needed */
+background-size: contain;  /* Ensure the image fits within the div */
+background-repeat: no-repeat;
+display: block;
+margin: 0 auto;  /* Center the image */
+margin-bottom: 10px;  /* Adjust the bottom margin as needed */
+}
+
+/* Card styles */
+.card1 {
+border: 1px solid #003f7e; /* Dark border */
+border-radius: 10px; /* Rounded corners for the entire card */
+transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+margin: 20px 0; /* Space between cards (top and bottom) */
+height: 100%; /* Make cards full height */
+overflow: hidden; /* Ensure child elements don’t overflow the rounded corners */
+}
+
+
+.card1:hover {
+transform: translateY(-5px); /* Lift effect on hover */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.card-header {
+background-color: #00376e; /* Slightly lighter dark background for the header */
+color: #ffffff; /* White text for the header */
+font-weight: bold; /* Bold text for the header */
+text-align: center; /* Centered text */
+padding: 15px; /* Padding for header */
+/* No need for border-radius here as it is applied to .card1 */
+}
+
+.card-body {
+background-color: #ffffff; /* Light background for the card body */
+color: #495057; /* Text color for the card body */
+padding: 20px; /* Padding for body */
+border-bottom-left-radius: 10px; /* Rounded corners for body */
+border-bottom-right-radius: 10px; /* Rounded corners for body */
+}
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+.card1 {
+    margin: 15px 0; /* Reduce space between cards on smaller screens */
+}
+}
+
+/* css for join button */
+/* Custom button styles */
+.btn.btn-outline-success {
+  /* --border-color: linear-gradient(-45deg, #0048cd, #0c23d4, #005681); */
+  --border-color: linear-gradient(-45deg, #4282f8, #00e1ff, #005681);
+  --border-width: 0.125em;
+  --curve-size: 0.5em;
+  --blur: 30px;
+  --bg: #11004f; /* Background color */
+  --color: #ecf3f8; /* Text color */
+  color: var(--color);
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  padding: 0.5em 1.5em;
+  font-size: 17px;
+  border: 0; /* Remove border */
+  text-transform: uppercase;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(
+    0% var(--curve-size),
+    var(--curve-size) 0,
+    100% 0,
+    100% calc(100% - var(--curve-size)),
+    calc(100% - var(--curve-size)) 100%,
+    0 100%
+  );
+  transition: color 250ms;
+}
+
+.btn.btn-outline-success::after,
+.btn.btn-outline-success::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.btn.btn-outline-success::before {
+  background: var(--border-color);
+  background-size: 300% 300%;
+  animation: move-bg7234 5s ease infinite;
+  z-index: -2;
+}
+
+@keyframes move-bg7234 {
+  0% {
+    background-position: 31% 0%;
+  }
+  50% {
+    background-position: 70% 100%;
+  }
+  100% {
+    background-position: 31% 0%;
+  }
+}
+
+.btn.btn-outline-success::after {
+  background: var(--bg);
+  z-index: -1;
+  clip-path: polygon(
+    var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+    calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+    calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+    var(--border-width) calc(100% - var(--border-width))
+  );
+  transition: clip-path 500ms;
+}
+
+.btn.btn-outline-success:where(:hover, :focus)::after {
+  clip-path: polygon(
+    calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+    calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+  );
+  transition: 200ms;
+}
+
+.btn.btn-outline-success:where(:hover, :focus) {
+  color: #fff; /* Change text color on hover */
+}
+
+/* for ai  */
+
+.containerai {
+  display: flex;
+  align-items: center; /* Vertically aligns items */
+  text-align: center; /* Ensures center alignment */
+  gap: 20px; /* Adds spacing between items */
+}
+
+.containerai img {
+  margin-right: 20px; /* Adds space between the image and content */
+  max-width: 350px;
+  height: auto; /* Maintains aspect ratio */
+}
+
+.contentai {
+  display: flex;
+  flex-direction: column; /* Stacks text and button vertically */
+  align-items: center; /* Centers content within the column */
+  gap: 20px; /* Adds space between the text and the button */
+}
+
+.text {
+  font-size: 45px;
+  font-weight: bold;
+  color: #031751;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-style: oblique;
+}
+
+.btnai {
+  border: none;
+  width: 20em;
+  height: 5em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(0deg, #1c3bae, #162e84);
+  /* background: linear-gradient(0deg, #0d1f6e, #2b4ae9); */
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+  margin-top: 30px;
+}
+
+.btnai:hover {
+  background: linear-gradient(0deg, #1c3bae, #1b39a3);
+  transform: translateY(-2px); /* Adds a slight hover effect */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btnai .text {
+  font-weight: 600;
+  color: white;
+  font-size: x-large;
+}
+
+.btnai svg {
+fill: white; /* لون الأيقونة */
+transition: all 450ms ease-in-out; /* تأثير سلس */
+width: 33px; /* الحجم الافتراضي للأيقونة */
+height: 33px; /* الحجم الافتراضي للأيقونة */
+}
+
+.btnai:hover svg {
+  transform: scale(1.2); /* Slight scaling on hover */
+}
+
+
+/* Media query for screens smaller than 767px (e.g., iPhones) */
+@media only screen and (max-width: 767px) {
+.containerai {
+  flex-direction: column; /* Stack the items vertically */
+  align-items: center; /* Center content */
+  width: 90%; /* Set container width to 90% of the screen width */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.containerai img {
+  margin-right: 0; /* Remove right margin for the image */
+  margin-bottom: 20px; /* Add space below the image */
+  max-width: 60%; /* Ensure the image takes 60% of the container's width */
+  height: auto; /* Maintain aspect ratio */
+
+
+.text {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    
+}
+
+.btnai {
+    width: 80%; /* Make the button responsive */
+    height: 4em; /* Adjust height for smaller screens */
+   
+}
+
+.btnai .text {
+    font-size: large; /* Adjust button text size for smaller screens */
+}
+}

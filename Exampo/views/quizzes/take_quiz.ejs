@@ -1,0 +1,59 @@
+<% layout("layouts/boilerplate") %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/stylesheets/take_quiz.css">
+
+<body>
+
+    <!-- Background animation divs -->
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+    <div class="quiz-container">
+        <!-- Progress bar section -->
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <!-- Timer display -->
+        <div class="timer"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-clock-fill pulse" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+          </svg>
+           <span id="time"><%= quiz.duration || 30 %></span></div>
+        
+        <!-- Main quiz content -->
+        <div class="question-container">
+            <div class="question"></div>
+            <div class="options"></div>
+            <!-- Navigation buttons -->
+            <div class="navigation-buttons">
+                <button type="button" onclick="nextQuestion()" id="next-btn">Next</button>
+                
+                <!-- Form around the Submit button -->
+                <form action="/quizzes/<%= quiz._id %>/submit" method="POST" id="submitForm">
+                    <input type="hidden" name="userAnswers" id="userAnswersInput">
+                    <button type="submit" id="submit-btn" style="display: none;">Submit Quiz</button>
+                </form>
+                
+            </div>
+        </div>
+        
+        <!-- Results section (hidden initially) -->
+        <!-- <div class="results">
+            <div class="score"></div>
+            <div class="review-container"></div>
+            <button type="button" onclick="restartQuiz()">Restart Quiz</button>
+        </div> -->
+    </div>
+    
+    <!-- Embedding questions and duration data -->
+    <script>
+        const questions = <%- JSON.stringify(quiz.questions) %>;
+        const totalDuration = <%= quiz.duration || 30 %>; // Embed total quiz duration
+    </script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/javascripts/take_quiz.js"></script>
+
+</html>
